@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<root>
+  <flat region="1" price="10 000" adress="Freedom street" owner="Yana" phone="6666-6666"/>
+  <flat region="2" price="6000" adress="Joke street" owner="Dima" phone="1111-1111"/>
+  <flat region="3" price="18 000" adress="Busy street" owner="Victor" phone="7457-7875"/>
+  <flat region="1" price="7 999" adress="Bossy street" owner="Vova" phone="9999-6666"/>
+  <flat region="2" price="11 000" adress="Lowely street" owner="Demidus" phone="3333-3636"/>
+  <flat region="3" price="15 000" adress="Star street" owner="Eliziq" phone="4545-5858"/>
+</root>
