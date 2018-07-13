@@ -9,6 +9,7 @@ using System.Xml.Linq;
 using FlatAgency.Models;
 using System.Collections.ObjectModel;
 using FlatAgency.Commands;
+using System.IO;
 
 namespace FlatAgency.ViewModels
 {
@@ -53,20 +54,22 @@ namespace FlatAgency.ViewModels
         public DataManager()
         {
             Flats = new ObservableCollection<Flat>();
-            path = @"..\..\Data\Contacts.xml";
+            path = @"..\..\Data\Flats.xml";
             doc = XDocument.Load(path);
             LoadData();
         }
         public void LoadData()
         {
-            var res = doc.Element("root").Elements("contact").ToList();
+            var res = doc.Element("root").Elements("flat").ToList();
             foreach (var x in res)
             {
                 Flat c = new Flat()
                 {
                     Region = x.Attribute("region").Value,
                     Price = x.Attribute("price").Value,
-                    Adress = x.Attribute("adress").Value
+                    Adress = x.Attribute("adress").Value,
+                    Owner = x.Attribute("owner").Value,
+                    Phone = x.Attribute("phone").Value
                 };
                 Flats.Add(c);
             }

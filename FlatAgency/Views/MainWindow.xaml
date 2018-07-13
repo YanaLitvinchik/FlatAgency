@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FlatAgency"
         mc:Ignorable="d"
-        Title="MainWindow" Height="700" Width="600">
-    <StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
-        <GroupBox Header="Список кваритир" Height="700" >
+        Title="MainWindow" Height="600" Width="700" Background="Aqua">
+    <!--<StackPanel HorizontalAlignment="Left" VerticalAlignment="Top">
+        <GroupBox Header="Список кваритир" Height="200" Width="330" >
             <ListView x:Name="List1" ItemsSource="{Binding Flats}"
                       SelectedItem="{Binding SelectedFlat}">
                 <ListView.View>
@@ -21,37 +21,87 @@
                 </ListView.View>
             </ListView>
         </GroupBox>
-        <GroupBox Header="Информация" HorizontalAlignment="Right" VerticalAlignment="Bottom" >
+        <GroupBox Header="Информация"  VerticalAlignment="Bottom" >
             <StackPanel DataContext="{Binding SelectedFlat}">
                 <Label Content="Region: "/>
-                <TextBox Text="{Binding Region,
-                    UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Region, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="Price: "/>
-                <TextBox Text="{Binding Price,
-                    UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="Adress: "/>
-                <TextBox Text="{Binding Adress,
-                    UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="Owner: "/>
-                <TextBox Text="{Binding Owner,
-                    UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Owner, UpdateSourceTrigger=PropertyChanged}"/>
 
                 <Label Content="Phone: "/>
-                <TextBox Text="{Binding Phone,
-                    UpdateSourceTrigger=PropertyChanged}"/>
+                <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}"/>
 
             </StackPanel>
         </GroupBox>
         <GroupBox Header="Управление">
             <StackPanel>
                 <Button Content="Добавить квартиру"
-                    Command="{Binding Path=Add}"/>
+                    Command="{Binding Add}"/>
                 <Button Content="Удалить квартиру"
-                    Command="{Binding Path=Del}"/>
+                    Command="{Binding Del}"/>
             </StackPanel>
         </GroupBox>
-    </StackPanel>
+    </StackPanel>-->
+
+
+
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="0.8*" />
+            <ColumnDefinition Width="1.0*" />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="2*"/>
+        </Grid.RowDefinitions>
+
+        <ListBox Grid.Column="0" Grid.Row="0" ItemsSource="{Binding Flats}"
+                 SelectedItem="{Binding SelectedFlat}" Margin="0,0,0,0" Grid.RowSpan="2">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Margin="5">
+                        <TextBlock FontSize="18" Text="{Binding Path=Adress}" />
+                        <TextBlock Text="{Binding Path=Region}" />
+                        <TextBlock Text="{Binding Path=Owner}" />
+                        <TextBlock Text="{Binding Path=Price}" />
+                        <TextBlock Text="{Binding Path=Phone}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" DataContext="{Binding SelectedFlat}" Margin="15,0,0,0" Width="400">
+            <TextBlock Text="Выбранный элемент"  />
+            <TextBlock Text="Адрес"  Width="400"/>
+            <TextBox  Width="400" Text="{Binding Adress, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Цена" />
+            <TextBox Text="{Binding Price, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Район" />
+            <TextBox Text="{Binding Region, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Владелец" />
+            <TextBox Text="{Binding Owner, UpdateSourceTrigger=PropertyChanged}" />
+            <TextBlock Text="Номер телефона" Width="400" />
+            <TextBox Text="{Binding Phone, UpdateSourceTrigger=PropertyChanged}" />
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.Column="1">
+            <GroupBox Header="Управление">
+                <StackPanel>
+                    <Button Content="Добавить квартиру"
+                    Command="{Binding Add}"/>
+                    <Button Content="Удалить квартиру"
+                    Command="{Binding Del}"/>
+                </StackPanel>
+            </GroupBox>
+        </StackPanel>
+    </Grid>
+
 </Window>
